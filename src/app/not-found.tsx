@@ -1,50 +1,25 @@
 import Link from 'next/link';
+import Image from 'next/image';
+
+import errorImg from '@/assets/App-Error.png';
 
 export default function NotFound() {
   return (
-    <main style={styles.container}>
-      <h1 style={styles.title}>404</h1>
-      <p style={styles.text}>This page could not be found.</p>
+    <main className="min-h-screen bg-white flex flex-col items-center justify-center p-4 text-center">
+      <div className="w-full max-w-[320px] sm:max-w-100 mb-6">
+        <Image src={errorImg} alt="404 Page Not Found" priority className="w-full h-auto object-contain mx-auto" />
+      </div>
 
-      <Link href="/" style={styles.button}>
+      <p className="text-gray-600 text-base sm:text-lg mb-6 max-w-md">
+        The page you are looking for doesn&apos;t exist or has been moved.
+      </p>
+
+      <Link
+        href="/"
+        className="px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-medium text-sm rounded-xl transition-all duration-200 shadow-sm hover:shadow"
+      >
         Back to Homepage
       </Link>
     </main>
   );
 }
-
-const styles = {
-  container: {
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column' as const,
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-    backgroundColor: '#000',
-    color: '#fff',
-    margin: 0,
-  },
-  title: {
-    fontSize: '3rem',
-    fontWeight: 600,
-    margin: 0,
-    letterSpacing: '-0.05em',
-  },
-  text: {
-    fontSize: '1rem',
-    color: '#888',
-    marginTop: '0.5rem',
-    marginBottom: '1.5rem',
-  },
-  button: {
-    padding: '0.6rem 1.2rem',
-    fontSize: '0.875rem',
-    fontWeight: 500,
-    color: '#000',
-    backgroundColor: '#fff',
-    borderRadius: '6px',
-    textDecoration: 'none',
-    transition: 'opacity 0.2s ease',
-  },
-};
