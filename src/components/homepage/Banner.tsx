@@ -4,7 +4,7 @@ import banner from '@/assets/hero.png';
 
 const BannerPage = () => {
   return (
-    <section className="bg-[#f8f9fc] py-16 px-4 md:py-24 overflow-hidden">
+    <section className="bg-[#f8f9fc] pt-16 px-4 md:pt-24 pb-0 overflow-hidden">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-[#1e293b] tracking-tight leading-tight mb-6">
           We Build <br />
@@ -16,9 +16,7 @@ const BannerPage = () => {
           goal is to turn your ideas into digital experiences that truly make an impact.
         </p>
 
-        {/* Action Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
-          {/* Google Play Button */}
           <a
             href="https://play.google.com"
             target="_blank"
@@ -46,7 +44,6 @@ const BannerPage = () => {
             Google Play
           </a>
 
-          {/* App Store Button */}
           <a
             href="https://apple.com/app-store"
             target="_blank"
@@ -60,7 +57,6 @@ const BannerPage = () => {
           </a>
         </div>
 
-        {/* Hero Image Container */}
         <div className="relative mx-auto max-w-2xl flex justify-center items-center">
           <Image src={banner} alt="Hero App Preview" priority className="w-full h-auto object-contain" />
         </div>
