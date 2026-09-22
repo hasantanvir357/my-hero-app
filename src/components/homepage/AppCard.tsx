@@ -1,61 +1,35 @@
 import React from 'react';
 import Image from 'next/image';
-
-export interface IRating {
-  name: string;
-  count: number;
-}
-
-export interface IApp {
-  image: string;
-  title: string;
-  companyName: string;
-  id: number;
-  description: string;
-  size: number;
-  reviews: string;
-  ratingAvg: number;
-  downloads: string;
-  ratings: IRating[];
-}
+import { IApp } from '../../types/apps.type';
 
 const AppCard: React.FC<{ app: IApp }> = ({ app }) => {
   return (
-    <div className="card bg-base-100 shadow-md border border-base-200 rounded-2xl p-4 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-      <div className="w-full aspect-square bg-base-200 rounded-xl overflow-hidden mb-3 relative">
+    <div className="flex flex-col gap-2 p-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all cursor-pointer group">
+      {/* Play Store Style Rounded App Icon */}
+      <div className="relative w-full aspect-square bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200/60 dark:border-slate-700/50">
         <Image
           src={app.image}
           alt={app.title}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <h3 className="font-semibold text-base text-base-content line-clamp-1 group-hover:text-primary transition-colors">
+      <div className="flex flex-col gap-1 mt-1">
+        <h3 className="font-medium text-sm text-slate-800 dark:text-slate-100 line-clamp-1 group-hover:text-primary transition-colors">
           {app.title}
         </h3>
 
-        <p className="text-xs text-base-content/60 line-clamp-1">{app.companyName}</p>
+        <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-1">{app.companyName}</p>
 
-        <div className="flex items-center justify-between text-xs font-medium pt-1">
-          <div className="flex items-center gap-1 bg-emerald-50 text-emerald-600 dark:bg-emerald-950/30 dark:text-emerald-400 px-2.5 py-1 rounded-md">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-              />
-            </svg>
-            <span>{app.downloads}</span>
-          </div>
-
-          <div className="flex items-center gap-1 bg-amber-50 text-amber-600 dark:bg-amber-950/30 dark:text-amber-400 px-2.5 py-1 rounded-md">
-            <span>★</span>
+        <div className="flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
+          <div className="flex items-center gap-0.5 font-semibold">
             <span>{app.ratingAvg}</span>
+            <span className="text-amber-500 text-xs">★</span>
           </div>
+          <span className="text-slate-300 dark:text-slate-600">•</span>
+          <span className="text-slate-500">{app.downloads}</span>
         </div>
       </div>
     </div>
